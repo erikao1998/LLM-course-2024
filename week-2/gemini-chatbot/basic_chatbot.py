@@ -2,8 +2,12 @@ from fasthtml.common import *
 import google.generativeai as genai
 import strip_markdown
 import configparser
+import os
+from dotenv import load_dotenv
 
-API_KEY = os.environ.get("GEMINI_API_KEY")
+load_dotenv()
+
+API_KEY = os.getenv("GEMINI_API_KEY")
 genai.configure(api_key=API_KEY)
 LLM = "gemini-1.5-flash"
 model = genai.GenerativeModel(LLM)
@@ -14,7 +18,8 @@ prompts.read('prompts.env')
 
 # Set system prompt
 #system_prompt = prompts.get("SYSTEM_PROMPTS", "IT_HELPDESK")
-system_prompt = f'Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:'
+#system_prompt = f'Summarize the following text about {prompts.get("TEMPLATES", "TOPIC")} in {prompts.get("TEMPLATES", "NUMBER")} bullet points:'
+system_prompt = "You are a sarcastic pirate"
 
 # Set up the app, including daisyui and tailwind for the chat component
 hdrs = (picolink, Script(src="https://cdn.tailwindcss.com"),

@@ -18,7 +18,7 @@ from llama_index.core import Settings
 # This will expose the api link “http://localhost:5010/api/parseDocument?renderFormat=all” for you to utilize in your code.
 
 # Initialize LLm
-llm = Ollama(model="llama3", request_timeout=60.0)
+llm = Ollama(model="llama3.2", request_timeout=120.0) # Had to increase the request timeout in order to prevent timeout error
 
 llmsherpa_api_url = "http://localhost:5010/api/parseDocument?renderFormat=all"
 pdf_url = "https://abc.xyz/assets/91/b3/3f9213d14ce3ae27e1038e01a0e0/2024q1-alphabet-earnings-release-pdf.pdf"
